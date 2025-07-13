@@ -19,8 +19,8 @@
 					<h4 class="text-center mb-4">
 						Заголовок вашей формы
 					</h4>
-					<form method="post">
-                        {% csrf_token %}
+					<form action="", method="post">
+    					{% csrf_token %}
 						<!-- Запишите здесь тег {% csrf_token %} -->
 
                         <label for="my_text">Введи своё имя</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
@@ -43,6 +43,31 @@
                         <div class="form-input">
                             <textarea id="my_textarea" name="my_textarea" rows="10" placeholder="Начни писать здесь" required></textarea>
                         </div>
+						<label for="my_email">Введи свой E-Mail</label>
+                        <div class="form-input">
+                            <span><i class="fa fa-paper-plane-o"></i></span>
+							<input type='email' id="my_email" name="my_text" placeholder="Введи E-Mail" required>
+						</div>
+						<label for="my_password">Введи пароль</label>
+						<div class="form-input">
+                            <span><i class="fa fa-lock"></i></span>
+							<input type='password' id="my_password" name="pass" placeholder='Введите пароль' required>
+						</div>
+						<label for="my_date">Введи дату</label>
+						<div class="form-input">
+                            <span><i class="fa fa-calendar"></i></span>
+							<input type='date' id="my_date" name="date" placeholder='Введи дату' required>
+						</div>
+						<label for="my_age">Введи свой возраст</label>
+						<div class="form-input">
+                            <span><i class="fa fa-male"></i></span>
+							<input type='number' min=1 max=100 step=1 id="my_age" name="age" placeholder='Введи свой возраст' required>
+						</div>
+						<label for="my_checkbox">Учишься прогать?) </label>
+						<div class="form-input">
+                            <span><i class="fa fa-check-square-o"></i></span>
+							<input type='checkbox' id="my_checkbox" name="checkbox" required>
+						</div>
 
                         <!-- Добавьте своих полей --------------------------------------------------------------------->
                         <!-- Сформируйте и заполните нужные строки ввода (оберните их <div class="form-input"> как показано выше. Это нужно чтобы были одинаковые стили)-->

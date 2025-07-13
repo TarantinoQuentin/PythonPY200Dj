@@ -14,11 +14,11 @@ def template_view(request):
         received_data = request.POST  # Приняли данные в словарь
 
         # как пример получение данных по ключу `my_text`
-        # my_text = received_data.get('my_text')
-
-        # TODO Проведите здесь получение и обработку данных если это необходимо
-
-        # TODO Верните HttpRequest или JsonResponse с данными
+        data_form = received_data.get('my_text', 'my_select', 'my_textarea', 'my_email', 'my_password', 'my_date', 'my_age', 'my_checkbox')
+        # Проведите здесь получение и обработку данных если это необходимо
+        # Верните HttpRequest или JsonResponse с данными
+        return JsonResponse(received_data, json_dumps_params={'ensure_ascii': False,
+                                                     'indent': 4})
 
 
 def login_view(request):
