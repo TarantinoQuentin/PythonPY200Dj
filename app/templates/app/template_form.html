@@ -46,12 +46,12 @@
 						<label for="my_email">Введи свой E-Mail</label>
                         <div class="form-input">
                             <span><i class="fa fa-paper-plane-o"></i></span>
-							<input type='email' id="my_email" name="my_text" placeholder="Введи E-Mail" required>
+							<input type='email' id="my_email" name="my_email" placeholder="Введи E-Mail" required>
 						</div>
 						<label for="my_password">Введи пароль</label>
 						<div class="form-input">
                             <span><i class="fa fa-lock"></i></span>
-							<input type='password' id="my_password" name="pass" placeholder='Введите пароль' required>
+							<input type='password' id="my_password" name="my_password" placeholder='Введите пароль' required>
 						</div>
 						<label for="my_date">Введи дату</label>
 						<div class="form-input">
@@ -82,7 +82,11 @@
 
                         <!---- Добавьте еще поле для переключателя checkbox (придумайте текст для label)---->
                         <!--------------------------------------------------------------------------------------------->
-
+						{% if form.errors %}
+							<div class="mb-3 d-flex align-items-center">
+								<span style="color: red; font-size: 16px">{{ form.errors }}</span>
+							</div>
+						{% endif %}
                         <!-- В форме всегда присутствует кнопка чтобы что-то отправить. Кнопку не изменять! -->
 						<div class="mb-3"> 
 							<button type="submit" class="btn btn-block">

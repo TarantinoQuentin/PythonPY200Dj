@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-# TODO создайте здесь все необходимые формы
+# создайте здесь все необходимые формы
 
 
 class TemplateForm(forms.Form):
@@ -13,8 +13,25 @@ class TemplateForm(forms.Form):
     ))
     # widget тоже нужен только для отображения в HTML
     my_textarea = forms.CharField(widget=forms.Textarea)
+    # Опишите поля (поле для email, пароля, даты, целого числа, переключателя) и их параметры для вашего шаблона формы
+    my_email = forms.EmailField()
+    my_password = forms.CharField(widget=forms.PasswordInput)
+    date = forms.DateField()
+    age = forms.IntegerField()
+    checkbox = forms.BooleanField()
 
-    # TODO Опишите поля (поле для email, пароля, даты, целого числа, переключателя) и их параметры для вашего шаблона формы
+
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(widget=forms.EmailInput)
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data["email"]
+        if commit:
+            user.save()
+            if hasattr(self, "save_m2m"):
+                self.save_m2m()
+        return user
 
 
 """
