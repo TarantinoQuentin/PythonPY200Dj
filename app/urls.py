@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import template_view, index_view, login_view, register_view, \
     logout_view, user_detail_view, get_text_json
 
