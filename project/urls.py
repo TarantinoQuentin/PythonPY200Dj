@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
@@ -35,4 +36,5 @@ urlpatterns = [
     path('reset/done/',
          auth_views.PasswordResetCompleteView.as_view(template_name="app/password_reset_complete.html"),
          name='password_reset_complete'),
+    path('', include('landing.urls')),
 ]
