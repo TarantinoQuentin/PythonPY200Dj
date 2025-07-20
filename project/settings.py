@@ -46,6 +46,14 @@ AUTHENTICATION_BACKENDS = (
    'django.contrib.auth.backends.ModelBackend',
 )
 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Пример настроек для использования консольного бэкенда (для тестирования)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.ethereal.email'
+EMAIL_HOST_USER = 'giovani.strosin58@ethereal.email'
+EMAIL_HOST_PASSWORD = 'wwMa8uh6yq8u5qfXPY'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+
 LOGIN_REDIRECT_URL = '/profile/' # Чтобы после авторизации перенаправлялось на страницу пользователя
 
 SOCIAL_AUTH_GITHUB_KEY = 'Ov23liztyz7ohA5Tyivz'

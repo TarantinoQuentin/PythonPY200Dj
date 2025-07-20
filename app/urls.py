@@ -1,12 +1,20 @@
-from django.urls import path, include
+from django.urls import path
 from .views import template_view, index_view, login_view, register_view, \
     logout_view, user_detail_view, get_text_json
+from .views import TemplView, MyTemplView, MyFormView, MyLoginView
+from django.contrib.auth.views import LoginView
+
 
 app_name = 'app'
 
 urlpatterns = [
     path('', index_view, name='index'),
-    path('template/', template_view, name='template'),
+    path('template/', MyFormView.as_view(), name='template'),  # Пропишите path выше, чем прошлый, чтобы маршрутизатор
+    path('template/', MyTemplView.as_view(), name='template'),  # выполнял именно пример с классовым представлением,
+    path('template/', TemplView.as_view(), name='template'),  # а не функциональным (помним, что выполняется представление
+    path('template/', template_view, name='template'),  # то, что выше при одинаковом маршруте).
+    path('login/', LoginView.as_view(template_name='app/login.html', redirect_authenticated_user=True), name='login'),
+    path('login/', MyLoginView.as_view(), name='login'),
     path('login/', login_view, name='login'),
     path('register/', register_view, name='register'),
     path('logout', logout_view, name='logout'),
