@@ -18,7 +18,7 @@ class MyFormView(FormView):
     success_url = '/'  # Ссылка для перехода при удачной валидации
 
     def form_valid(self, form):
-        return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False})
+        return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
 
 
 class MyTemplView(TemplateView):
@@ -37,7 +37,7 @@ class MyTemplView(TemplateView):
             date = form.cleaned_data.get('date')
             age = form.cleaned_data.get('age')
             checkbox = form.cleaned_data.get('checkbox')
-            return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False})
+            return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
         context = self.get_context_data(**kwargs)  # Получаем контекст, если он есть
         context["form"] = form  # Записываем в контекст форму
         return self.render_to_response(context)  # Возвращаем вызов метода render_to_response
@@ -61,7 +61,7 @@ class TemplView(View):
             date = form.cleaned_data.get('date')
             age = form.cleaned_data.get('age')
             checkbox = form.cleaned_data.get('checkbox')
-            return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False})
+            return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
         return render(request, 'app/template_form.html', context={"form": form})
 
 
@@ -87,7 +87,7 @@ def template_view(request):
             age = form.cleaned_data.get('age')
             checkbox = form.cleaned_data.get('checkbox')
             # Верните HttpRequest или JsonResponse с данными
-            return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False})
+            return JsonResponse(form.cleaned_data, json_dumps_params={'ensure_ascii': False, 'indent': 4})
         return render(request, 'app/template_form.html', context={"form": form})
 
 
@@ -143,5 +143,5 @@ def user_detail_view(request):
 def get_text_json(request):
     if request.method == "GET":
         return JsonResponse({"text": get_random_text()},
-                            json_dumps_params={"ensure_ascii": False})
+                            json_dumps_params={"ensure_ascii": False, 'indent': 4})
 
